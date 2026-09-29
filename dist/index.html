@@ -305,15 +305,54 @@ button.mopt{width:100%; background:none; text-align:left; font:inherit; color:in
 @keyframes lB1{0%,5%{opacity:0;transform:translateY(16px) scale(.9)}12%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
 @keyframes lB2{0%,21%{opacity:0;transform:translateY(16px) scale(.9)}28%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
 @keyframes lB3{0%,39%{opacity:0;transform:translateY(16px) scale(.9)}46%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
+
+/* HERO GRAPH */
+.hero{position:relative; overflow:hidden}
+.hero>.wrap{position:relative; z-index:1}
+.hero-graph{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0}
+.hb{transform-box:fill-box; transform-origin:50% 100%; animation:hbUp 1s cubic-bezier(.2,.7,.2,1) backwards; animation-delay:calc(var(--i)*.08s + .25s)}
+.hl{stroke-dasharray:1; stroke-dashoffset:0; animation:hlDraw 2.4s cubic-bezier(.5,0,.2,1) .5s backwards}
+.hd{animation:hFade .5s ease backwards} .hd:nth-child(1){animation-delay:1.1s} .hd:nth-child(2){animation-delay:1.8s} .hd:nth-child(3){animation-delay:2.4s}
+.harrow{animation:hFade .5s ease 2.7s backwards}
+.hpulse{transform-box:fill-box; transform-origin:center; animation:hPulse 2.6s ease-out 3s infinite}
+@keyframes hbUp{from{transform:scaleY(0); opacity:0}}
+@keyframes hlDraw{from{stroke-dashoffset:1}}
+@keyframes hFade{from{opacity:0}}
+@keyframes hPulse{0%{transform:scale(1); opacity:.9}100%{transform:scale(3.4); opacity:0}}
+@media (max-width:860px){.hero-graph{opacity:.5}}
+.email{font-weight:600; letter-spacing:-.01em; border-bottom:1px solid transparent; transition:border-color .2s}
+.email:hover{border-bottom-color:var(--accent)}
+.email .at,.mopt small .at{color:var(--accent); font-weight:700; margin:0 1px}
+.email .dom{opacity:.55; font-weight:500}
+.tcard.tfeat{margin-bottom:20px; padding:46px 52px; background:var(--black); color:#fff}
+.tfeat .q{font-size:clamp(1.5rem,3vw,2.3rem); font-weight:600; letter-spacing:-.03em; line-height:1.25; max-width:24ch}
+.tfeat .mark{color:var(--accent)}
+.tfeat .who{color:#ffffffb3; margin-top:22px}
+.tfeat .who a{color:var(--accent); border-bottom:1px solid transparent; transition:border-color .2s}
+.tfeat .who a:hover{border-bottom-color:var(--accent)}
+@media (max-width:640px){.tcard.tfeat{padding:32px 26px}}
+.hero-stat{position:relative}
+.fchip{position:absolute; z-index:2; display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:980px; background:rgba(22,19,14,.78); border:1px solid #ffffff26; color:#fff; font-size:.85rem; font-weight:600; white-space:nowrap; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:0 24px 40px -20px #000; animation:chipFloat 4.2s ease-in-out infinite alternate}
+.fc1{top:-22px; right:-26px}
+.fc2{bottom:-24px; left:-38px; animation-delay:-2s}
+.dotp{width:9px; height:9px; border-radius:50%; background:#5be38b; box-shadow:0 0 0 0 #5be38b88; animation:dotPulse 2s ease-out infinite}
+.tw{transform-box:fill-box; transform-origin:center; animation:twk 3.4s ease-in-out infinite}
+.tw.t2{animation-delay:-1.1s} .tw.t3{animation-delay:-2.2s}
+@keyframes chipFloat{from{transform:translateY(0)}to{transform:translateY(-9px)}}
+@keyframes dotPulse{0%{box-shadow:0 0 0 0 #5be38b99}100%{box-shadow:0 0 0 10px #5be38b00}}
+@keyframes twk{0%,100%{opacity:.25; transform:scale(.7)}50%{opacity:1; transform:scale(1.15)}}
+@media (max-width:1000px){.fc1{right:-8px}.fc2{left:-8px}}
+@media (max-width:640px){.fchip{display:none}}
 </style>
 <script>
-/* META PIXEL: replace YOUR_PIXEL_ID with your real Pixel ID from Meta Events Manager */
-(function(){var ID='YOUR_PIXEL_ID'; if(ID==='YOUR_PIXEL_ID')return;
+/* META PIXEL */
+(function(){var ID='1839667937195262';
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init',ID);fbq('track','PageView');})();
 </script>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1839667937195262&ev=PageView&noscript=1" alt=""/></noscript>
 
 <header>
   <nav class="wrap">
@@ -340,6 +379,23 @@ fbq('init',ID);fbq('track','PageView');})();
 
 <main id="top">
   <section class="hero">
+    <svg class="hero-graph" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="hgBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8bd6a" stop-opacity=".45"/><stop offset="1" stop-color="#b58a3d" stop-opacity=".03"/></linearGradient>
+        <linearGradient id="hgLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b58a3d"/><stop offset="1" stop-color="#ffe2a0"/></linearGradient>
+        <radialGradient id="hgOrb" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8bd6a" stop-opacity=".42"/><stop offset=".6" stop-color="#b58a3d" stop-opacity=".14"/><stop offset="1" stop-color="#b58a3d" stop-opacity="0"/></radialGradient>
+        <filter id="hgBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs>
+      <g stroke="#ffffff" stroke-opacity=".05" stroke-width="1"><path d="M0 160H1440"/><path d="M0 300H1440"/><path d="M0 440H1440"/><path d="M0 580H1440"/></g>
+      <g class="hrings"><circle cx="1120" cy="400" r="300" fill="url(#hgOrb)"/><circle cx="1120" cy="400" r="380" fill="none" stroke="#e8bd6a" stroke-opacity=".10" stroke-width="1.5"/><circle cx="1120" cy="400" r="470" fill="none" stroke="#e8bd6a" stroke-opacity=".06" stroke-width="1.5" stroke-dasharray="3 9"/></g>
+      <g fill="#ffe2a0"><path class="tw t1" d="M900 150l6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/><path class="tw t2" d="M1290 250l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path class="tw t3" d="M640 110l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+      <g fill="url(#hgBar)"><rect class="hb" style="--i:0" x="40" y="710" width="72" height="50" rx="14"/><rect class="hb" style="--i:1" x="153" y="706" width="72" height="54" rx="14"/><rect class="hb" style="--i:2" x="266" y="693" width="72" height="67" rx="14"/><rect class="hb" style="--i:3" x="379" y="672" width="72" height="88" rx="14"/><rect class="hb" style="--i:4" x="492" y="643" width="72" height="117" rx="14"/><rect class="hb" style="--i:5" x="605" y="605" width="72" height="155" rx="14"/><rect class="hb" style="--i:6" x="718" y="559" width="72" height="201" rx="14"/><rect class="hb" style="--i:7" x="831" y="504" width="72" height="256" rx="14"/><rect class="hb" style="--i:8" x="944" y="441" width="72" height="319" rx="14"/><rect class="hb" style="--i:9" x="1057" y="370" width="72" height="390" rx="14"/><rect class="hb" style="--i:10" x="1170" y="290" width="72" height="470" rx="14"/><rect class="hb" style="--i:11" x="1283" y="202" width="72" height="558" rx="14"/></g>
+      <path class="hl" pathLength="1" d="M40 716 C220 712 360 690 470 660 C600 622 700 590 790 535 C900 468 1000 420 1090 345 C1170 280 1240 210 1330 150" fill="none" stroke="#e8bd6a" stroke-width="16" stroke-opacity=".35" stroke-linecap="round" filter="url(#hgBlur)"/>
+      <path class="hl" pathLength="1" d="M40 716 C220 712 360 690 470 660 C600 622 700 590 790 535 C900 468 1000 420 1090 345 C1170 280 1240 210 1330 150" fill="none" stroke="url(#hgLine)" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <g fill="#080807" stroke="#e8bd6a" stroke-width="3"><circle class="hd" cx="470" cy="660" r="8"/><circle class="hd" cx="790" cy="535" r="8"/><circle class="hd" cx="1090" cy="345" r="8"/></g>
+      <polygon class="harrow" points="1362,128 1322,140 1336,170" fill="#ffe2a0"/>
+      <circle class="hpulse" cx="1330" cy="150" r="10" fill="none" stroke="#ffe2a0" stroke-width="2"/>
+    </svg>
     <div class="wrap hero-grid">
       <div>
         <h1>Business advertising, run like a media company.</h1>
@@ -350,6 +406,7 @@ fbq('init',ID);fbq('track','PageView');})();
         </div>
       </div>
       <div class="hero-stat">
+        <div class="fchip fc1"><span class="dotp"></span>Limited availability</div>
         <div class="num">3.2×</div>
         <div class="cap">Average return on ad spend across active clients</div>
         <div class="div"></div>
@@ -537,6 +594,7 @@ fbq('init',ID);fbq('track','PageView');})();
       <div class="shead">
         <h2>What clients say</h2>
       </div>
+      <div class="tcard tfeat"><span class="mark">"</span><p class="q">Since we partnered with Inceptly, we've seen new records. It's amazing!</p><div class="who">Chase Lye — founder, <a href="https://swadestudios.com" target="_blank" rel="noopener">Swade Studios</a></div></div>
       <div class="tgrid">
         <div class="tcard"><span class="mark">"</span><p class="q">Inceptly took over our Instagram ads and our booking calendar has been full for three months straight.</p><div class="who">Marisol Ortega — owner, Petal & Stem Florals</div></div>
         <div class="tcard"><span class="mark">"</span><p class="q">I finally understand what I'm paying for. The monthly reports actually make sense.</p><div class="who">Dave Kwan — owner, Kwan's Auto Detail</div></div>
@@ -580,7 +638,7 @@ fbq('init',ID);fbq('track','PageView');})();
       <div class="contact-info">
         <h2>Let's look at your ads.</h2>
         <p>Tell us about your business and we'll send back a free audit of your current advertising — no pressure.</p>
-        <div class="cinfo-row"><b>Email</b>incepto08@gmail.com</div>
+        <div class="cinfo-row"><b>Email</b><a class="email" href="mailto:incepto08@gmail.com">incepto08<span class="at">@</span><span class="dom">gmail.com</span></a></div>
         <div class="cinfo-row"><b>Hours</b>Mon–Fri, 9am–6pm</div>
       </div>
       <form id="contactForm" action="https://formspree.io/f/xdekljwd" method="POST" novalidate>
@@ -611,7 +669,7 @@ fbq('init',ID);fbq('track','PageView');})();
     <button class="modal-x" type="button" aria-label="Close">&times;</button>
     <h3 id="advTitle">Talk to an advisor</h3>
     <p>Choose what's easiest. A real person will reply within one business day.</p>
-    <a class="mopt" href="mailto:incepto08@gmail.com?subject=Question%20about%20Inceptly%20plans"><span class="mi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><b>Email an advisor</b><small>incepto08@gmail.com</small></span></a>
+    <a class="mopt" href="mailto:incepto08@gmail.com?subject=Question%20about%20Inceptly%20plans"><span class="mi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><b>Email an advisor</b><small>incepto08<span class="at">@</span>gmail.com</small></span></a>
     <a class="mopt" href="#contact" data-close><span class="mi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Schedule a call</b><small>Leave your details and we'll reach out</small></span></a>
     <a class="mopt" href="#contact" data-close><span class="mi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span><b>Get a free ad audit</b><small>We review your current ads for you</small></span></a>
     <div class="modal-note">Mon–Fri, 9am–6pm</div>
